@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'common.dart';
@@ -9,7 +11,7 @@ class ChipDate extends StatefulWidget {
       this.textFieldWidth = 180,
       this.emptyMessage = "Clic pour saisir",
       this.txtStyle = const TextStyle(fontWeight: FontWeight.w500),
-      this.icon,
+      this.icon = Icons.help,
       this.deleteTooltipMessage = "Supprimer",
       visible = true,
       this.tooltipMessage,

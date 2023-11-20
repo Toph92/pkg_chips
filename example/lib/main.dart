@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import "package:pkg_chips/chipDate.dart";
 import "package:pkg_chips/chipText.dart";
 import "package:pkg_chips/common.dart";
@@ -59,14 +60,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   ChipText utilisateur = ChipText(
-      bgColor: Colors.blue.shade200,
-      emptyMessage: "Utilisateur ?",
-      tooltipMessageEmpty: "Saisir une partie du nom ou du prénom",
-      tooltipMessage: "Utilisateur",
-      removable: false,
-      textFieldWidth: 150,
-      bottomMessage: "Utilisateur",
-      icon: Icons.person);
+    bgColor: Colors.blue.shade200,
+    emptyMessage: "Utilisateur ?",
+    tooltipMessageEmpty: "Saisir une partie du nom ou du prénom",
+    tooltipMessage: "Utilisateur",
+    removable: false,
+    textFieldWidth: 150,
+    bottomMessage: "Utilisateur",
+  );
 
   ChipDate dateDebut = ChipDate(
     bgColor: Colors.lightGreen,
