@@ -136,11 +136,22 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                     label: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: widget.dateValue == null
-                          ? Text(
-                              widget.emptyMessage,
-                              style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontStyle: FontStyle.italic),
+                          ? FittedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    widget.emptyMessage,
+                                    style: const TextStyle(
+                                        color: Colors.grey,
+                                        fontStyle: FontStyle.italic),
+                                  ),
+                                  SizedBox(
+                                      width: widget.dateValue == null &&
+                                              widget.removable == false
+                                          ? 10
+                                          : 0),
+                                ],
+                              ),
                             )
                           : Text(DateFormat('d/M/y').format(widget.dateValue!)),
                     ),

@@ -133,7 +133,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                             height: 32, // empirique la hauteur :(
                             child: Tooltip(
                               message: controller.text != ""
-                                  ? widget.tooltipMessage
+                                  ? widget.tooltipMessage ?? ""
                                   : "",
                               child: TextField(
                                   onChanged: (value) {
@@ -170,55 +170,71 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                             : widget.tooltipMessageEmpty ?? "",
                         child: Theme(
                           data: ThemeData(useMaterial3: false),
-                          child: Chip(
-                            /* materialTapTargetSize:
-                                MaterialTapTargetSize., */
-                            elevation: 4.0,
-                            visualDensity: const VisualDensity(vertical: 0),
-                            backgroundColor: widget.bgColor,
-                            labelPadding: const EdgeInsets.all(2.0),
-                            color: MaterialStatePropertyAll(widget.bgColor),
-                            avatar: Icon(
-                              widget.icon,
-                              color: widget.iconColor ??
-                                  Theme.of(context).primaryColor,
-                            ),
-                            deleteIconColor: Colors.grey.shade700,
-                            deleteButtonTooltipMessage:
-                                widget.deleteTooltipMessage,
-                            onDeleted:
-                                widget.removable || widget.textValue != null
-                                    ? () {
-                                        if (widget.textValue != null) {
-                                          widget.textValue = null;
-                                          StringNotification(null)
-                                              .dispatch(context);
-                                        } else {
-                                          ChipDeleteNotification()
-                                              .dispatch(context);
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                editMode = !editMode;
+                              });
+                            },
+                            child: Chip(
+                              /* materialTapTargetSize:
+                                  MaterialTapTargetSize., */
+                              elevation: 4.0,
+                              visualDensity: const VisualDensity(vertical: 0),
+                              backgroundColor: widget.bgColor,
+                              labelPadding: const EdgeInsets.all(2.0),
+                              color: MaterialStatePropertyAll(widget.bgColor),
+                              avatar: Icon(
+                                widget.icon,
+                                color: widget.iconColor ??
+                                    Theme.of(context).primaryColor,
+                              ),
+                              deleteIconColor: Colors.grey.shade700,
+                              deleteButtonTooltipMessage:
+                                  widget.deleteTooltipMessage,
+                              deleteIcon: null,
+                              onDeleted:
+                                  widget.removable || widget.textValue != null
+                                      ? () {
+                                          if (widget.textValue != null) {
+                                            widget.textValue = null;
+                                            //widget.textValue = null;
+                                            StringNotification(null)
+                                                .dispatch(context);
+                                          } else {
+                                            ChipDeleteNotification()
+                                                .dispatch(context);
+                                          }
                                         }
-                                      }
-                                    : null,
-                            label: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      editMode = !editMode;
-                                    });
-                                  },
-                                  child: widget.textValue == null
-                                      ? Text(
-                                          widget.emptyMessage,
-                                          style: const TextStyle(
-                                              color: Colors.grey,
-                                              fontStyle: FontStyle.italic),
-                                        )
-                                      : Padding(
-                                          padding:
-                                              const EdgeInsets.only(bottom: 2),
-                                          child: Text(widget.textValue ?? ""),
-                                        )),
+                                      : null,
+                              label: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: widget.textValue == null
+                                    ? FittedBox(
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              widget.emptyMessage,
+                                              style: const TextStyle(
+                                                  color: Colors.grey,
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                            SizedBox(
+                                                width:
+                                                    widget.textValue == null &&
+                                                            widget.removable ==
+                                                                false
+                                                        ? 10
+                                                        : 0),
+                                          ],
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 2),
+                                        child: Text(widget.textValue ?? ""),
+                                      ),
+                              ),
                             ),
                           ),
                         ),

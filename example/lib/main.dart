@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
     emptyMessage: "Date début ?",
     bottomMessage: "Date début",
     icon: Icons.calendar_month_outlined,
-    removable: true,
+    removable: false,
   );
 
   @override
@@ -127,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: ChipText(
                 bgColor: Colors.orange.shade200,
+                removable: true,
                 emptyMessage: "Heure ?",
                 textFieldWidth: 100,
                 icon: Icons.alarm,
