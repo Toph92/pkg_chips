@@ -131,37 +131,32 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                           padding: const EdgeInsets.all(4.0),
                           child: SizedBox(
                             height: 32, // empirique la hauteur :(
-                            child: Tooltip(
-                              message: controller.text != ""
-                                  ? widget.tooltipMessage ?? ""
-                                  : "",
-                              child: TextField(
-                                  onChanged: (value) {
-                                    StringNotification(value).dispatch(context);
-                                  },
-                                  //autofocus: true,
-                                  //focusNode: focus,
-                                  controller: controller,
-                                  style: widget.txtStyle,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(
-                                      widget.icon,
-                                      color: widget.iconColor ??
-                                          Theme.of(context).primaryColor,
-                                      size:
-                                          24, // ici aussi, à l'oeil pour la hauteur pour avoir la même taille qua dans le chip. Bon, en faisant une constante (partagée avec chip), ce sera mieux
-                                    ),
-                                    //labelText: widget.label,
-                                    /* hintText: widget.label,
-                                    hintStyle: const TextStyle(
-                                        color: Colors.grey, fontSize: 14), */
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade700,
-                                        fontWeight: FontWeight.w500),
-                                    isDense: true,
-                                    //border: const OutlineInputBorder(),
-                                  )),
-                            ),
+                            child: TextField(
+                                onChanged: (value) {
+                                  StringNotification(value).dispatch(context);
+                                },
+                                autofocus: true,
+                                focusNode: focus,
+                                controller: controller,
+                                style: widget.txtStyle,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    widget.icon,
+                                    color: widget.iconColor ??
+                                        Theme.of(context).primaryColor,
+                                    size:
+                                        24, // ici aussi, à l'oeil pour la hauteur pour avoir la même taille qua dans le chip. Bon, en faisant une constante (partagée avec chip), ce sera mieux
+                                  ),
+                                  //labelText: widget.label,
+                                  /* hintText: widget.label,
+                                  hintStyle: const TextStyle(
+                                      color: Colors.grey, fontSize: 14), */
+                                  labelStyle: TextStyle(
+                                      color: Colors.grey.shade700,
+                                      fontWeight: FontWeight.w500),
+                                  isDense: true,
+                                  //border: const OutlineInputBorder(),
+                                )),
                           ),
                         ))
                     : Tooltip(
