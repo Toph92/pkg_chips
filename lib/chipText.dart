@@ -193,7 +193,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                       ? () {
                                           if (widget.textValue != null) {
                                             widget.textValue = null;
-                                            //widget.textValue = null;
+                                            controller.clear();
                                             StringNotification(null)
                                                 .dispatch(context);
                                           } else {
