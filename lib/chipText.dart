@@ -139,8 +139,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                   onChanged: (value) {
                                     StringNotification(value).dispatch(context);
                                   },
-                                  autofocus: true,
-                                  focusNode: focus,
+                                  //autofocus: true,
+                                  //focusNode: focus,
                                   controller: controller,
                                   style: widget.txtStyle,
                                   decoration: InputDecoration(
