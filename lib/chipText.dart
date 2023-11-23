@@ -133,7 +133,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                             height: 32, // empirique la hauteur :(
                             child: TextField(
                                 onChanged: (value) {
-                                  StringNotification(value).dispatch(context);
+                                  ChipStringNotification(value)
+                                      .dispatch(context);
                                 },
                                 autofocus: true,
                                 focusNode: focus,
@@ -188,19 +189,20 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                               deleteButtonTooltipMessage:
                                   widget.deleteTooltipMessage,
                               deleteIcon: null,
-                              onDeleted: widget.removable ||
-                                      widget.textValue != null
-                                  ? () {
-                                      if (widget.textValue != null) {
-                                        widget.textValue = null;
-                                        controller.clear();
-                                        StringNotification(null)
-                                            .dispatch(context);
-                                      } else {
-                                        DeleteNotification().dispatch(context);
-                                      }
-                                    }
-                                  : null,
+                              onDeleted:
+                                  widget.removable || widget.textValue != null
+                                      ? () {
+                                          if (widget.textValue != null) {
+                                            widget.textValue = null;
+                                            controller.clear();
+                                            ChipStringNotification(null)
+                                                .dispatch(context);
+                                          } else {
+                                            ChipDeleteNotification()
+                                                .dispatch(context);
+                                          }
+                                        }
+                                      : null,
                               label: MouseRegion(
                                 cursor: SystemMouseCursors.click,
                                 child: widget.textValue == null

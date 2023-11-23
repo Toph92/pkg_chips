@@ -108,11 +108,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
-                    case StringNotification:
+                    case ChipStringNotification:
                       print(
-                          "Notif: ${(notification as StringNotification).value}");
+                          "Notif: ${(notification as ChipStringNotification).value}");
                       break;
-                    case DeleteNotification:
+                    case ChipDeleteNotification:
                       print("Delete");
                       utilisateur.visible = false;
                       break;
@@ -136,11 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
             NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
-                    case DateNotification:
+                    case ChipDateNotification:
                       print(
-                          "Notif: ${(notification as DateNotification).value}");
+                          "Notif: ${(notification as ChipDateNotification).value}");
                       break;
-                    case DeleteNotification:
+                    case ChipDeleteNotification:
                       print("Delete");
                       dateDebut.visible = false;
                       break;

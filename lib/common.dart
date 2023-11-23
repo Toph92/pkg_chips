@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class StringNotification extends Notification {
+class ChipStringNotification extends Notification {
   final String? value;
-  StringNotification(this.value);
+  ChipStringNotification(this.value);
 }
 
-class DateNotification extends Notification {
+class ChipDateNotification extends Notification {
   final DateTime? value;
-  DateNotification(this.value);
+  ChipDateNotification(this.value);
 }
 
-class DeleteNotification extends Notification {
-  DeleteNotification();
+class ChipDeleteNotification extends Notification {
+  ChipDeleteNotification();
 }
 
 mixin ChipMixin {
