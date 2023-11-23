@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'common.dart';
 
+// ignore: must_be_immutable
 class ChipDate extends StatefulWidget {
   ChipDate(
       {super.key,
@@ -134,19 +135,16 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                     ),
                     label: MouseRegion(
                       cursor: SystemMouseCursors.click,
-                      child: FittedBox(
-                        child: widget.dateValue == null
-                            ? Text(
-                                widget.emptyMessage,
-                                style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontStyle: FontStyle.italic),
-                              )
-                            : Text(
-                                DateFormat('d/M/y').format(widget.dateValue!)),
-                      ),
+                      child: widget.dateValue == null
+                          ? Text(
+                              widget.emptyMessage,
+                              style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontStyle: FontStyle.italic),
+                            )
+                          : Text(DateFormat('d/M/y').format(widget.dateValue!)),
                     ),
-                    padding: const EdgeInsets.all(8.0),
+                    //padding: const EdgeInsets.symmetric(horizontal: 0),
                   ),
                 ),
               ),
