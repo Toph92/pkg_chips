@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(
                           "Notif: ${(notification as StringNotification).value}");
                       break;
-                    case ChipDeleteNotification:
+                    case DeleteNotification:
                       print("Delete");
                       utilisateur.visible = false;
                       break;
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(
                           "Notif: ${(notification as DateNotification).value}");
                       break;
-                    case ChipDeleteNotification:
+                    case DeleteNotification:
                       print("Delete");
                       dateDebut.visible = false;
                       break;

@@ -10,8 +10,8 @@ class DateNotification extends Notification {
   DateNotification(this.value);
 }
 
-class ChipDeleteNotification extends Notification {
-  ChipDeleteNotification();
+class DeleteNotification extends Notification {
+  DeleteNotification();
 }
 
 mixin ChipMixin {
