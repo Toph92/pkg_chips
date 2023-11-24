@@ -46,7 +46,7 @@ class ChipText extends StatefulWidget {
   String? get textValue => _textValue;
 
   set textValue(String? value) {
-    debugPrint("set Text");
+    debugPrint("set Text $value");
     _textValue = value;
     assert(_valueNotif != null);
     _valueNotif?.value = value;
