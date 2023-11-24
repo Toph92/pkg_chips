@@ -175,6 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     utilisateur.textValue = "Hello";
                     dateDebut.dateValue =
                         DateTime.now().add(const Duration(days: 2));
+                    setState(() {});
                   },
                   child: const Text("Set Value"),
                 ))
