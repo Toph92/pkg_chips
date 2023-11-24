@@ -118,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   removable: true,
                   textFieldWidth: 150,
                   bottomMessage: "Utilisateur",
+                  disabledColor: Colors.blueGrey,
                 ),
               ),
             ),

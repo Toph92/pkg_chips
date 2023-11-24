@@ -14,21 +14,21 @@ class ChipTextControler extends ChangeNotifier {
 
 // ignore: must_be_immutable
 class ChipText extends StatefulWidget {
-  ChipText({
-    super.key,
-    required this.controler,
-    this.bgColor = Colors.white,
-    this.textFieldWidth = 180,
-    this.emptyMessage = "Clic pour saisir",
-    this.txtStyle = const TextStyle(fontWeight: FontWeight.w500),
-    this.icon = Icons.help,
-    this.deleteTooltipMessage = "Supprimer",
-    this.tooltipMessage,
-    this.tooltipMessageEmpty,
-    this.iconColor,
-    this.removable = false,
-    this.bottomMessage,
-  });
+  ChipText(
+      {super.key,
+      required this.controler,
+      this.bgColor = Colors.white,
+      this.textFieldWidth = 180,
+      this.emptyMessage = "Clic pour saisir",
+      this.txtStyle = const TextStyle(fontWeight: FontWeight.w500),
+      this.icon = Icons.help,
+      this.deleteTooltipMessage = "Supprimer",
+      this.tooltipMessage,
+      this.tooltipMessageEmpty,
+      this.iconColor,
+      this.removable = false,
+      this.bottomMessage,
+      this.disabledColor});
 
   ChipTextControler controler;
   final Color bgColor;
@@ -41,6 +41,7 @@ class ChipText extends StatefulWidget {
   final String? tooltipMessage;
   final String? bottomMessage;
   final Color? iconColor;
+  final Color? disabledColor;
   final bool removable;
 
   ValueNotifier<bool?>? _visibleNotif = ValueNotifier(true);
@@ -201,8 +202,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                     children: [
                                       Text(
                                         widget.emptyMessage,
-                                        style: const TextStyle(
-                                            color: Colors.grey,
+                                        style: TextStyle(
+                                            color: widget.disabledColor ??
+                                                Colors.grey,
                                             fontStyle: FontStyle.italic),
                                       ),
                                       SizedBox(

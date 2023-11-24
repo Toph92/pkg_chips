@@ -30,7 +30,8 @@ class ChipDate extends StatefulWidget {
       this.tooltipMessageEmpty,
       this.iconColor,
       this.removable = false,
-      this.bottomMessage});
+      this.bottomMessage,
+      this.disabledColor});
 
   ChipDateControler controler;
   final Color bgColor;
@@ -43,6 +44,7 @@ class ChipDate extends StatefulWidget {
   final String? tooltipMessage;
   final String? bottomMessage;
   final Color? iconColor;
+  final Color? disabledColor;
   final bool removable;
 
   bool _visible = true;
@@ -145,8 +147,9 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                                 children: [
                                   Text(
                                     widget.emptyMessage,
-                                    style: const TextStyle(
-                                        color: Colors.grey,
+                                    style: TextStyle(
+                                        color:
+                                            widget.disabledColor ?? Colors.grey,
                                         fontStyle: FontStyle.italic),
                                   ),
                                   SizedBox(
