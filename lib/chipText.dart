@@ -28,7 +28,8 @@ class ChipText extends StatefulWidget {
       this.iconColor,
       this.removable = false,
       this.bottomMessage,
-      this.disabledColor});
+      this.disabledColor,
+      this.item});
 
   ChipTextControler controler;
   final Color bgColor;
@@ -43,6 +44,7 @@ class ChipText extends StatefulWidget {
   final Color? iconColor;
   final Color? disabledColor;
   final bool removable;
+  dynamic item;
 
   ValueNotifier<bool?>? _visibleNotif = ValueNotifier(true);
 
@@ -79,7 +81,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
           ? controller.clear()
           : controller.text = widget.controler.textValue ?? "";
       setState(() {});
-      ChipStringNotification(widget.controler.textValue).dispatch(context);
+      ChipStringNotification(
+              value: widget.controler.textValue, item: widget.item)
+          .dispatch(context);
     });
 
     super.initState();
@@ -127,7 +131,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                       height: 32, // empirique la hauteur :(
                       child: TextField(
                           onChanged: (value) {
-                            ChipStringNotification(value).dispatch(context);
+                            ChipStringNotification(
+                                    value: value, item: widget.item)
+                                .dispatch(context);
                           },
                           autofocus: true,
                           focusNode: focus,
@@ -187,7 +193,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                 if (widget.controler.textValue != null) {
                                   widget.controler.textValue = null;
                                   controller.clear();
-                                  ChipStringNotification(null)
+                                  ChipStringNotification(
+                                          value: null, item: widget.item)
                                       .dispatch(context);
                                 } else {
                                   ChipDeleteNotification().dispatch(context);

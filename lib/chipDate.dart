@@ -31,7 +31,8 @@ class ChipDate extends StatefulWidget {
       this.iconColor,
       this.removable = false,
       this.bottomMessage,
-      this.disabledColor});
+      this.disabledColor,
+      this.item});
 
   ChipDateControler controler;
   final Color bgColor;
@@ -46,6 +47,7 @@ class ChipDate extends StatefulWidget {
   final Color? iconColor;
   final Color? disabledColor;
   final bool removable;
+  dynamic item;
 
   bool _visible = true;
   get visible => _visible;
@@ -104,7 +106,8 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                     setState(() {
                       if (value != null) {
                         widget.controler.dateValue = value;
-                        ChipDateNotification(value).dispatch(context);
+                        ChipDateNotification(value: value, item: widget.item)
+                            .dispatch(context);
                         //setState(() {});
                         //widget.onUpdate?.call(widget.date.value);
                       }
@@ -125,7 +128,9 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                             ? () {
                                 if (widget.controler.dateValue != null) {
                                   widget.controler.dateValue = null;
-                                  ChipDateNotification(null).dispatch(context);
+                                  ChipDateNotification(
+                                          value: null, item: widget.item)
+                                      .dispatch(context);
                                   setState(() {});
                                 } else {
                                   ChipDeleteNotification().dispatch(context);
