@@ -163,9 +163,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                     data: ThemeData(useMaterial3: false),
                     child: GestureDetector(
                       onTap: () {
-                        setState(() {
+                        /* setState(() {
                           editMode = !editMode;
-                        });
+                        }); */
                       },
                       child: Chip(
                         /* materialTapTargetSize:
