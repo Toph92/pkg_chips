@@ -81,6 +81,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
         setState(() {});
       }
     });
+    assert(widget._valueNotif != null);
     widget._valueNotif?.addListener(() {
       if (mounted) {
         widget.textValue == null
