@@ -66,14 +66,14 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
             ? widget.controler._textValue = null
             : widget.controler._textValue = controller.text;
         editMode = false;
-        setState(() {});
+        //setState(() {});
       }
     });
 
     widget._visibleNotif?.addListener(() {
-      if (mounted) {
+      /* if (mounted) {
         setState(() {});
-      }
+      } */
     });
     widget.controler.addListener(() {
       if (!mounted) return;
