@@ -77,13 +77,16 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
 
     widget._visibleNotif?.addListener(() {
       if (mounted) {
-        setState(() {}); // i refresh is date is changed
+        setState(() {});
       }
     });
     widget._valueNotif?.addListener(() {
       if (mounted) {
-        controller.text = widget.textValue ?? "";
-        setState(() {}); // i refresh is date is changed
+        widget.textValue == null
+            ? controller.clear()
+            : controller.text = widget.textValue!;
+        setState(() {});
+        print("Update");
       }
     });
     super.initState();
