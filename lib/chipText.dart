@@ -144,8 +144,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                 style: widget.txtStyle,
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(
-                                    //  widget.icon,
-                                    Icons.abc,
+                                    widget.icon,
                                     color: widget.iconColor ??
                                         Theme.of(context).primaryColor,
                                     size:
