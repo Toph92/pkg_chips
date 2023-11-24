@@ -86,7 +86,6 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
             ? controller.clear()
             : controller.text = widget.textValue!;
         setState(() {});
-        print("Update");
       }
     });
     super.initState();
@@ -145,7 +144,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                 style: widget.txtStyle,
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(
-                                    widget.icon,
+                                    //  widget.icon,
+                                    Icons.abc,
                                     color: widget.iconColor ??
                                         Theme.of(context).primaryColor,
                                     size:
