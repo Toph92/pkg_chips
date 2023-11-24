@@ -48,6 +48,7 @@ class ChipText extends StatefulWidget {
   set textValue(String? value) {
     debugPrint("set Text");
     _textValue = value;
+    assert(_valueNotif != null);
     _valueNotif?.value = value;
   }
 
@@ -89,6 +90,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
             : controller.text = widget.textValue!;
         debugPrint("Notif");
         setState(() {});
+      } else {
+        assert(false, "Not mounted");
       }
     });
     super.initState();
