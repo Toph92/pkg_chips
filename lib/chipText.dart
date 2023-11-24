@@ -51,7 +51,7 @@ class ChipText extends StatefulWidget {
   }
 
   ValueNotifier<bool?>? _visibleNotif = ValueNotifier(true);
-  ValueNotifier<String?>? _valueNotif = ValueNotifier("");
+  ValueNotifier<String?>? _valueNotif = ValueNotifier(null);
 
   @override
   State<ChipText> createState() => _ChipTextState();

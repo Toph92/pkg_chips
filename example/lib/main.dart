@@ -172,9 +172,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    utilisateur.textValue = "Hello";
-                    dateDebut.dateValue =
-                        DateTime.now().add(const Duration(days: 2));
+                    //utilisateur.textValue = "Hello";
+                    utilisateur.textValue = null;
+                    /* dateDebut.dateValue =
+                        DateTime.now().add(const Duration(days: 2)); */
+                    dateDebut.dateValue = null;
                     setState(() {});
                   },
                   child: const Text("Set Value"),
