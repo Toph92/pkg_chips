@@ -16,7 +16,7 @@ class ChipTextControler extends ChangeNotifier {
 class ChipText extends StatefulWidget {
   ChipText({
     super.key,
-    required this.controleur,
+    required this.controler,
     this.bgColor = Colors.white,
     this.textFieldWidth = 180,
     this.emptyMessage = "Clic pour saisir",
@@ -30,7 +30,7 @@ class ChipText extends StatefulWidget {
     this.bottomMessage,
   });
 
-  ChipTextControler controleur;
+  ChipTextControler controler;
   final Color bgColor;
   final double textFieldWidth;
   final String emptyMessage;
@@ -63,8 +63,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
             ? widget.textValue = null
             : widget.textValue = controller.text; */
         controller.text == ""
-            ? widget.controleur._textValue = null
-            : widget.controleur._textValue = controller.text;
+            ? widget.controler._textValue = null
+            : widget.controler._textValue = controller.text;
         editMode = false;
         setState(() {});
       }
@@ -75,12 +75,12 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
         setState(() {});
       }
     });
-    widget.controleur.addListener(() {
+    widget.controler.addListener(() {
       if (!mounted) return;
-      widget.controleur.textValue == null
+      widget.controler.textValue == null
           ? controller.clear()
-          : controller.text = widget.controleur.textValue ?? "";
-      ChipStringNotification(widget.controleur.textValue).dispatch(context);
+          : controller.text = widget.controler.textValue ?? "";
+      ChipStringNotification(widget.controler.textValue).dispatch(context);
       setState(() {});
     });
 
@@ -93,14 +93,14 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
     widget._visibleNotif?.dispose();
     widget._visibleNotif = null;
 
-    widget.controleur.dispose();
+    widget.controler.dispose();
 
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    widget.controleur.textValue != null &&
+    widget.controler.textValue != null &&
             widget.bottomMessage != null &&
             editMode == false
         ? displayBottomMessage = true
@@ -184,10 +184,10 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                         deleteButtonTooltipMessage: widget.deleteTooltipMessage,
                         deleteIcon: null,
                         onDeleted: widget.removable ||
-                                widget.controleur.textValue != null
+                                widget.controler.textValue != null
                             ? () {
-                                if (widget.controleur.textValue != null) {
-                                  widget.controleur.textValue = null;
+                                if (widget.controler.textValue != null) {
+                                  widget.controler.textValue = null;
                                   controller.clear();
                                   ChipStringNotification(null)
                                       .dispatch(context);
@@ -198,7 +198,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                             : null,
                         label: MouseRegion(
                           cursor: SystemMouseCursors.click,
-                          child: widget.controleur.textValue == null
+                          child: widget.controler.textValue == null
                               ? FittedBox(
                                   child: Row(
                                     children: [
@@ -209,7 +209,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                             fontStyle: FontStyle.italic),
                                       ),
                                       SizedBox(
-                                          width: widget.controleur.textValue ==
+                                          width: widget.controler.textValue ==
                                                       null &&
                                                   widget.removable == false
                                               ? 10
@@ -219,8 +219,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                 )
                               : Padding(
                                   padding: const EdgeInsets.only(bottom: 2),
-                                  child:
-                                      Text(widget.controleur.textValue ?? ""),
+                                  child: Text(widget.controler.textValue ?? ""),
                                 ),
                         ),
                       ),

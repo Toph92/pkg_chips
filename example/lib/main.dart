@@ -90,58 +90,57 @@ class _MyHomePageState extends State<MyHomePage> {
           //alignment: WrapAlignment.center,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
-            if (bHeureVisible)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: NotificationListener(
-                  onNotification: (notification) {
-                    switch (notification.runtimeType) {
-                      case ChipStringNotification:
-                        debugPrint(
-                            "Notif: ${(notification as ChipStringNotification).value}");
-                        break;
-                      case ChipDeleteNotification:
-                        debugPrint("Delete");
-                        //utilisateur.visible = false;
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: NotificationListener(
+                onNotification: (notification) {
+                  switch (notification.runtimeType) {
+                    case ChipStringNotification:
+                      debugPrint(
+                          "Notif: ${(notification as ChipStringNotification).value}");
+                      break;
+                    case ChipDeleteNotification:
+                      debugPrint("Delete");
+                      //utilisateur.visible = false;
 
-                        break;
-                      default:
-                    }
-                    return true;
-                  },
-                  child: ChipText(
-                    controleur: userControler,
-                    bgColor: Colors.blue.shade200,
-                    emptyMessage: "Utilisateur ?",
-                    tooltipMessageEmpty:
-                        "Saisir une partie du nom ou du prénom",
-                    tooltipMessage: "Utilisateur",
-                    removable: true,
-                    textFieldWidth: 150,
-                    bottomMessage: "Utilisateur",
-                  ),
-                ),
-              ),
-            NotificationListener<ChipDeleteNotification>(
-              onNotification: (notification) {
-                setState(() {
-                  bHeureVisible = false;
-                });
-
-                return true;
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                      break;
+                    default:
+                  }
+                  return true;
+                },
                 child: ChipText(
-                  controleur: hourControler,
-                  bgColor: Colors.orange.shade200,
+                  controler: userControler,
+                  bgColor: Colors.blue.shade200,
+                  emptyMessage: "Utilisateur ?",
+                  tooltipMessageEmpty: "Saisir une partie du nom ou du prénom",
+                  tooltipMessage: "Utilisateur",
                   removable: true,
-                  emptyMessage: "Heure ?",
-                  textFieldWidth: 100,
-                  icon: Icons.alarm,
+                  textFieldWidth: 150,
+                  bottomMessage: "Utilisateur",
                 ),
               ),
             ),
+            if (bHeureVisible)
+              NotificationListener<ChipDeleteNotification>(
+                onNotification: (notification) {
+                  setState(() {
+                    bHeureVisible = false;
+                  });
+
+                  return true;
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ChipText(
+                    controler: hourControler,
+                    bgColor: Colors.orange.shade200,
+                    removable: true,
+                    emptyMessage: "Heure ?",
+                    textFieldWidth: 100,
+                    icon: Icons.alarm,
+                  ),
+                ),
+              ),
             NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
@@ -158,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return true;
                 },
                 child: ChipDate(
-                  controleur: dateControler,
+                  controler: dateControler,
                   bgColor: Colors.lightGreen,
                   emptyMessage: "Date début ?",
                   bottomMessage: "Date début",
