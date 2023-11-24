@@ -59,23 +59,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  ChipText utilisateur = ChipText(
-    bgColor: Colors.blue.shade200,
-    emptyMessage: "Utilisateur ?",
-    tooltipMessageEmpty: "Saisir une partie du nom ou du prénom",
-    tooltipMessage: "Utilisateur",
-    removable: false,
-    textFieldWidth: 150,
-    bottomMessage: "Utilisateur",
-  );
-
-  ChipDate dateDebut = ChipDate(
-    bgColor: Colors.lightGreen,
-    emptyMessage: "Date début ?",
-    bottomMessage: "Date début",
-    icon: Icons.calendar_month_outlined,
-    removable: false,
-  );
+  ChipTextControler userControler = ChipTextControler();
+  ChipTextControler hourControler = ChipTextControler();
+  ChipDateControler dateControler = ChipDateControler();
+  bool bHeureVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -103,59 +90,88 @@ class _MyHomePageState extends State<MyHomePage> {
           //alignment: WrapAlignment.center,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: NotificationListener(
-                onNotification: (notification) {
-                  switch (notification.runtimeType) {
-                    case ChipStringNotification:
-                      print(
-                          "Notif: ${(notification as ChipStringNotification).value}");
-                      break;
-                    case ChipDeleteNotification:
-                      print("Delete");
-                      utilisateur.visible = false;
-                      break;
-                    default:
-                  }
-                  return true;
-                },
-                child: utilisateur,
+            if (bHeureVisible)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: NotificationListener(
+                  onNotification: (notification) {
+                    switch (notification.runtimeType) {
+                      case ChipStringNotification:
+                        debugPrint(
+                            "Notif: ${(notification as ChipStringNotification).value}");
+                        break;
+                      case ChipDeleteNotification:
+                        debugPrint("Delete");
+                        //utilisateur.visible = false;
+
+                        break;
+                      default:
+                    }
+                    return true;
+                  },
+                  child: ChipText(
+                    controleur: userControler,
+                    bgColor: Colors.blue.shade200,
+                    emptyMessage: "Utilisateur ?",
+                    tooltipMessageEmpty:
+                        "Saisir une partie du nom ou du prénom",
+                    tooltipMessage: "Utilisateur",
+                    removable: true,
+                    textFieldWidth: 150,
+                    bottomMessage: "Utilisateur",
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ChipText(
-                bgColor: Colors.orange.shade200,
-                removable: true,
-                emptyMessage: "Heure ?",
-                textFieldWidth: 100,
-                icon: Icons.alarm,
+            NotificationListener<ChipDeleteNotification>(
+              onNotification: (notification) {
+                setState(() {
+                  bHeureVisible = false;
+                });
+
+                return true;
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ChipText(
+                  controleur: hourControler,
+                  bgColor: Colors.orange.shade200,
+                  removable: true,
+                  emptyMessage: "Heure ?",
+                  textFieldWidth: 100,
+                  icon: Icons.alarm,
+                ),
               ),
             ),
             NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
                     case ChipDateNotification:
-                      print(
+                      debugPrint(
                           "Notif: ${(notification as ChipDateNotification).value}");
                       break;
                     case ChipDeleteNotification:
-                      print("Delete");
-                      dateDebut.visible = false;
+                      debugPrint("Delete");
+                      //dateDebut.visible = false;
                       break;
                     default:
                   }
                   return true;
                 },
-                child: dateDebut),
+                child: ChipDate(
+                  controleur: dateControler,
+                  bgColor: Colors.lightGreen,
+                  emptyMessage: "Date début ?",
+                  bottomMessage: "Date début",
+                  icon: Icons.calendar_month_outlined,
+                  removable: false,
+                )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(
                 icon: const Icon(Icons.visibility),
                 onPressed: () {
-                  utilisateur.visible = true;
-                  dateDebut.visible = true;
+                  //utilisateur.visible = true;
+                  //dateDebut.visible = true;
                 },
               ),
             ),
@@ -164,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: IconButton(
                 icon: const Icon(Icons.visibility_off),
                 onPressed: () {
-                  utilisateur.visible = false;
+                  //utilisateur.visible = false;
                 },
               ),
             ),
@@ -172,12 +188,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    //utilisateur.textValue = "Hello";
-                    utilisateur.textValue = null;
+                    userControler.textValue = "Hello";
+                    //utilisateur.textValue = null;
+                    //userControleur.textValue = null;
+
                     /* dateDebut.dateValue =
                         DateTime.now().add(const Duration(days: 2)); */
-                    dateDebut.dateValue = null;
-                    setState(() {});
+                    dateControler.dateValue = null;
+                    //setState(() {});
                   },
                   child: const Text("Set Value"),
                 ))

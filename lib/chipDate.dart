@@ -4,10 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'common.dart';
 
+class ChipDateControler extends ChangeNotifier {
+  DateTime? _dateValue;
+  DateTime? get dateValue => _dateValue;
+
+  set dateValue(DateTime? value) {
+    _dateValue = value;
+    notifyListeners();
+  }
+}
+
 // ignore: must_be_immutable
 class ChipDate extends StatefulWidget {
   ChipDate(
       {super.key,
+      required this.controleur,
       this.bgColor = Colors.white,
       this.textFieldWidth = 180,
       this.emptyMessage = "Clic pour saisir",
@@ -23,6 +34,7 @@ class ChipDate extends StatefulWidget {
     this.visible = visible;
   }
 
+  ChipDateControler controleur;
   final Color bgColor;
   final double textFieldWidth;
   //final String label;
