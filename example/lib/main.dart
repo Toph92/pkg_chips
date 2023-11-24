@@ -188,9 +188,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    userControler.textValue = "Hello";
-                    //utilisateur.textValue = null;
-                    //userControleur.textValue = null;
+                    //userControler.textValue = "Hello";
+
+                    userControler.textValue = null;
 
                     /* dateDebut.dateValue =
                         DateTime.now().add(const Duration(days: 2)); */

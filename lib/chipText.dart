@@ -80,6 +80,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
       widget.controleur.textValue == null
           ? controller.clear()
           : controller.text = widget.controleur.textValue ?? "";
+      ChipStringNotification(widget.controleur.textValue).dispatch(context);
       setState(() {});
     });
 
