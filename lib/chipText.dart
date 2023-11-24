@@ -46,7 +46,7 @@ class ChipText extends StatefulWidget {
   String? get textValue => _textValue;
 
   set textValue(String? value) {
-    print("set Text");
+    debugPrint("set Text");
     _textValue = value;
     _valueNotif?.value = value;
   }
@@ -86,8 +86,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
         widget.textValue == null
             ? controller.clear()
             : controller.text = widget.textValue!;
+        debugPrint("Notif");
         setState(() {});
-        print("Notif");
       }
     });
     super.initState();
