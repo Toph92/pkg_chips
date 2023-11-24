@@ -59,28 +59,25 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
   void initState() {
     focus.addListener(() {
       if (focus.hasFocus == false) {
-        /* controller.text == ""
-            ? widget.textValue = null
-            : widget.textValue = controller.text; */
         controller.text == ""
             ? widget.controler._textValue = null
             : widget.controler._textValue = controller.text;
         editMode = false;
-        //setState(() {});
+        setState(() {});
       }
     });
 
     widget._visibleNotif?.addListener(() {
-      /* if (mounted) {
+      if (mounted) {
         setState(() {});
-      } */
+      }
     });
     widget.controler.addListener(() {
       if (!mounted) return;
       widget.controler.textValue == null
           ? controller.clear()
           : controller.text = widget.controler.textValue ?? "";
-      //setState(() {});
+      setState(() {});
       ChipStringNotification(widget.controler.textValue).dispatch(context);
     });
 
@@ -163,9 +160,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                     data: ThemeData(useMaterial3: false),
                     child: GestureDetector(
                       onTap: () {
-                        /* setState(() {
+                        setState(() {
                           editMode = !editMode;
-                        }); */
+                        });
                       },
                       child: Chip(
                         /* materialTapTargetSize:

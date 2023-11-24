@@ -98,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     case ChipStringNotification:
                       debugPrint(
                           "Notif: ${(notification as ChipStringNotification).value}");
+                      setState(() {});
                       break;
                     case ChipDeleteNotification:
                       debugPrint("Delete");
