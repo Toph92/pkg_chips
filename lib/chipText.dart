@@ -81,9 +81,7 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
           ? controller.clear()
           : controller.text = widget.controler.textValue ?? "";
       setState(() {});
-      ChipStringNotification(
-              value: widget.controler.textValue, item: widget.item)
-          .dispatch(context);
+      ChipUpdateNotification(item: widget.item).dispatch(context);
     });
 
     super.initState();
@@ -131,8 +129,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                       height: 32, // empirique la hauteur :(
                       child: TextField(
                           onChanged: (value) {
-                            ChipStringNotification(
-                                    value: value, item: widget.item)
+                            widget.controler._textValue = value;
+                            ChipUpdateNotification(item: widget.item)
                                 .dispatch(context);
                           },
                           autofocus: true,
@@ -191,10 +189,9 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                 widget.controler.textValue != null
                             ? () {
                                 if (widget.controler.textValue != null) {
-                                  widget.controler.textValue = null;
+                                  widget.controler._textValue = null;
                                   controller.clear();
-                                  ChipStringNotification(
-                                          value: null, item: widget.item)
+                                  ChipUpdateNotification(item: widget.item)
                                       .dispatch(context);
                                 } else {
                                   ChipDeleteNotification().dispatch(context);

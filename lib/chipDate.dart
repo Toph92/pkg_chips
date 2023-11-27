@@ -106,7 +106,7 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                     setState(() {
                       if (value != null) {
                         widget.controler.dateValue = value;
-                        ChipDateNotification(value: value, item: widget.item)
+                        ChipUpdateNotification(item: widget.item)
                             .dispatch(context);
                         //setState(() {});
                         //widget.onUpdate?.call(widget.date.value);
@@ -128,8 +128,7 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                             ? () {
                                 if (widget.controler.dateValue != null) {
                                   widget.controler.dateValue = null;
-                                  ChipDateNotification(
-                                          value: null, item: widget.item)
+                                  ChipUpdateNotification(item: widget.item)
                                       .dispatch(context);
                                   setState(() {});
                                 } else {

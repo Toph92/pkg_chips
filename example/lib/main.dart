@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ChipTextControler userControler = ChipTextControler();
   ChipTextControler hourControler = ChipTextControler();
   ChipDateControler dateControler = ChipDateControler();
+  TextEditingController textControleur = TextEditingController();
   bool bHeureVisible = true;
 
   @override
@@ -92,12 +93,35 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
+              child: Text(textControleur.text),
+            ),
+            SizedBox(
+                width: 100,
+                child: TextField(
+                  controller: textControleur,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                )),
+            const SizedBox(height: 30, child: VerticalDivider()),
+
+            /*
+
+
+
+            */
+
+            Text(userControler.textValue ?? '?'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
-                    case ChipStringNotification:
-                      debugPrint(
-                          "Notif: ${(notification as ChipStringNotification).value}");
+                    case ChipUpdateNotification:
+                      /* debugPrint(
+                          "Notif: ${(notification as ChipUpdateNotification).value}"); */
+                      debugPrint("value=${userControler.textValue}");
+                      //userControler.textValue = (notification).value;
                       setState(() {});
                       break;
                     case ChipDeleteNotification:
@@ -146,9 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
             NotificationListener(
                 onNotification: (notification) {
                   switch (notification.runtimeType) {
-                    case ChipDateNotification:
-                      debugPrint(
-                          "Notif: ${(notification as ChipDateNotification).value}");
+                    case ChipUpdateNotification:
+                      /*debugPrint(
+                          "Notif: ${(notification as ChipUpdateNotification).value}");*/
+                      debugPrint("value=${dateControler.dateValue}");
                       break;
                     case ChipDeleteNotification:
                       debugPrint("Delete");

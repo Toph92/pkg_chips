@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ChipStringNotification extends Notification {
-  final String? value;
+class ChipUpdateNotification extends Notification {
+  //final String? value;
   dynamic item;
-  ChipStringNotification({this.value, this.item});
+  ChipUpdateNotification({/*this.value,*/ this.item});
 }
 
-class ChipDateNotification extends Notification {
+/* class ChipDateNotification extends Notification {
   final DateTime? value;
   dynamic item;
   ChipDateNotification({this.value, this.item});
-}
+} */
 
 class ChipDeleteNotification extends Notification {
   dynamic item;
