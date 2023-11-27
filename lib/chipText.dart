@@ -129,7 +129,11 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                       height: 32, // empirique la hauteur :(
                       child: TextField(
                           onChanged: (value) {
-                            widget.controler._textValue = value;
+                            if (value == "") {
+                              widget.controler._textValue = null;
+                            } else {
+                              widget.controler._textValue = value;
+                            }
                             ChipUpdateNotification(item: widget.item)
                                 .dispatch(context);
                           },
