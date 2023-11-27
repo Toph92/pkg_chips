@@ -89,8 +89,8 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
     widget._valueNotif?.dispose();
     widget._valueNotif = null;
 
-    widget.controler?.dispose();
-    widget.controler = null;
+    //widget.controler?.dispose();
+    //widget.controler = null;
 
     super.dispose();
   }

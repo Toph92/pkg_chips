@@ -93,8 +93,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
     widget._visibleNotif?.dispose();
     widget._visibleNotif = null;
 
-    widget.controler?.dispose();
-    widget.controler = null;
+    //widget.controler?.dispose();
+    //widget.controler = null;
 
     super.dispose();
   }
