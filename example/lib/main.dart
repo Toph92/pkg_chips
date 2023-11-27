@@ -214,13 +214,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    //userControler.textValue = "Hello";
+                    userControler.textValue = "Hello";
+                    //userControler.textValue = null;
 
-                    userControler.textValue = null;
-
-                    /* dateDebut.dateValue =
-                        DateTime.now().add(const Duration(days: 2)); */
-                    dateControler.dateValue = null;
+                    dateControler.dateValue =
+                        DateTime.now().add(const Duration(days: 2));
+                    //dateControler.dateValue = null;
                     //setState(() {});
                   },
                   child: const Text("Set Value"),
