@@ -137,7 +137,8 @@ class _ChipDateState extends State<ChipDate> with ChipMixin {
                                       .dispatch(context);
                                   setState(() {});
                                 } else {
-                                  ChipDeleteNotification().dispatch(context);
+                                  ChipDeleteNotification(item: widget.item)
+                                      .dispatch(context);
                                 }
                               }
                             : null,

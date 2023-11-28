@@ -199,7 +199,8 @@ class _ChipTextState extends State<ChipText> with ChipMixin {
                                   ChipUpdateNotification(item: widget.item)
                                       .dispatch(context);
                                 } else {
-                                  ChipDeleteNotification().dispatch(context);
+                                  ChipDeleteNotification(item: null)
+                                      .dispatch(context);
                                 }
                               }
                             : null,

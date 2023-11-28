@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ChipUpdateNotification extends Notification {
   //final String? value;
   dynamic item;
-  ChipUpdateNotification({/*this.value,*/ this.item});
+  ChipUpdateNotification({/*this.value,*/ required this.item});
 }
 
 /* class ChipDateNotification extends Notification {
@@ -14,7 +14,7 @@ class ChipUpdateNotification extends Notification {
 
 class ChipDeleteNotification extends Notification {
   dynamic item;
-  ChipDeleteNotification({this.item});
+  ChipDeleteNotification({required this.item});
 }
 
 mixin ChipMixin {
